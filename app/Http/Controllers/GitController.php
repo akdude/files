@@ -39,11 +39,12 @@ class GitController extends Controller
         foreach ($common_files as $key => $value) {
             $v1_file_path =  $v1Path. DIRECTORY_SEPARATOR .$value;
             $v2_file_path =  $v2Path. DIRECTORY_SEPARATOR . $value;
-            
-            if( md5_file($v1_file_path) === md5_file($v2_file_path) ) {
+            if(is_file($v1_file_path) && is_file($v2_file_path)){
+                if( md5_file($v1_file_path) === md5_file($v2_file_path) ){
                 continue;
-            } else {
-                array_push($diff_in_files, $value);
+                } else {
+                    array_push($diff_in_files, $value);
+                }
             }
         }
 
