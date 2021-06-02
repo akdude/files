@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use File;
+use Jfcherng\Diff\Differ;
+use Jfcherng\Diff\DiffHelper;
+use Jfcherng\Diff\Factory\RendererFactory;
+use Jfcherng\Diff\Renderer\RendererConstant;
 
 
 class GitController extends Controller
@@ -48,26 +52,49 @@ class GitController extends Controller
             }
         }
 
-        if($action == 'difference'){
+        if($action == 'difference') {
             return view('diffdata',['files' => $diff_in_files]);
         }
 
         if($action == 'differenceinfiles' && $request->file_name == null){
-            $string_old = file_get_contents($v1Path. DIRECTORY_SEPARATOR. $diff_in_files[0]);
-            $string_new = file_get_contents($v2Path. DIRECTORY_SEPARATOR. $diff_in_files[0]);
-            $diff = get_decorated_diff($string_old, $string_new, $diff_in_files[0]);
-            $diff['all_files'] = $diff_in_files;
-            
+            $oldFile = $v1Path. DIRECTORY_SEPARATOR. $diff_in_files[0];
+            $newFile = $v2Path. DIRECTORY_SEPARATOR. $diff_in_files[0];
         }
 
         if($action == 'differenceinfiles' && $request->file_name !== null){
-            $string_old = file_get_contents($v1Path. DIRECTORY_SEPARATOR. $request->file_name);
-            $string_new = file_get_contents($v2Path. DIRECTORY_SEPARATOR. $request->file_name);
-            $diff = get_decorated_diff($string_old, $string_new);
-            
+            $oldFile = $v1Path. DIRECTORY_SEPARATOR. $request->file_name;
+            $newFile = $v2Path. DIRECTORY_SEPARATOR. $request->file_name;
         }
+        
+        
+        $rendererName = 'SideBySide';
 
-        return $diff;
+        $differOptions = [
+            'context' => 3,
+            'ignoreCase' => false,
+            'ignoreWhitespace' => false,
+        ];
+
+        $rendererOptions = [
+            'detailLevel' => 'line',
+            'language' => 'eng',
+            'lineNumbers' => true,
+            'separateBlock' => true,
+            'showHeader' => true,
+            'spacesToNbsp' => false,
+            'tabSize' => 4,
+            'mergeThreshold' => 0.8,
+            'cliColorization' => RendererConstant::CLI_COLOR_ENABLE,
+            'outputTagAsString' => false,
+            'jsonEncodeFlags' => \JSON_UNESCAPED_SLASHES | \JSON_UNESCAPED_UNICODE,
+            'wordGlues' => [' ', '-'],
+            'resultForIdenticals' => null,
+            'wrapperClasses' => ['diff-wrapper', 'table-bordered', 'table-responsive'],
+        ];
+
+        $jsonResult = DiffHelper::calculateFiles($oldFile, $newFile, $rendererName, $differOptions, $rendererOptions);
+        return ["content" => $jsonResult , "all_files" => $diff_in_files];
+
     }
 }
 

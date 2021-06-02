@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "94d4bf9ac7f4a933030e46a346ee2917",
+    "content-hash": "98f708ba1a5fbff7306b062f87d1fb6f",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -390,6 +390,201 @@
                 "trusted proxy"
             ],
             "time": "2020-10-22T13:48:01+00:00"
+        },
+        {
+            "name": "jfcherng/php-color-output",
+            "version": "2.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jfcherng/php-color-output.git",
+                "reference": "2673074597eca9682d2fdfaee39a22418d4cc2f6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jfcherng/php-color-output/zipball/2673074597eca9682d2fdfaee39a22418d4cc2f6",
+                "reference": "2673074597eca9682d2fdfaee39a22418d4cc2f6",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1.3"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^2.15",
+                "phan/phan": "^2.2",
+                "phpunit/phpunit": "^7.2 || ^8.2 || ^9",
+                "squizlabs/php_codesniffer": "^3.5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Jfcherng\\Utility\\": "src/"
+                },
+                "files": [
+                    "src/helpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jack Cherng",
+                    "email": "jfcherng@gmail.com"
+                }
+            ],
+            "description": "Make your PHP command-line application colorful.",
+            "keywords": [
+                "ansi-colors",
+                "color",
+                "command-line",
+                "str-color"
+            ],
+            "time": "2020-05-27T19:24:44+00:00"
+        },
+        {
+            "name": "jfcherng/php-diff",
+            "version": "6.10.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jfcherng/php-diff.git",
+                "reference": "808f042a3dc97e1070d9e1d825bf596cd9d020b4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jfcherng/php-diff/zipball/808f042a3dc97e1070d9e1d825bf596cd9d020b4",
+                "reference": "808f042a3dc97e1070d9e1d825bf596cd9d020b4",
+                "shasum": ""
+            },
+            "require": {
+                "jfcherng/php-color-output": "^2.0",
+                "jfcherng/php-mb-string": "^1.3",
+                "jfcherng/php-sequence-matcher": "^3.2.5",
+                "php": ">=7.1.3"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^2.18",
+                "liip/rmt": "^1.6",
+                "phan/phan": "^2.5 || ^3 || ^4",
+                "phpunit/phpunit": ">=7 <10",
+                "squizlabs/php_codesniffer": "^3.5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Jfcherng\\Diff\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Jack Cherng",
+                    "email": "jfcherng@gmail.com"
+                },
+                {
+                    "name": "Chris Boulton",
+                    "email": "chris.boulton@interspire.com"
+                }
+            ],
+            "description": "A comprehensive library for generating differences between two strings in multiple formats (unified, side by side HTML etc).",
+            "keywords": [
+                "diff",
+                "udiff",
+                "unidiff",
+                "unified diff"
+            ],
+            "time": "2021-03-19T09:20:25+00:00"
+        },
+        {
+            "name": "jfcherng/php-mb-string",
+            "version": "1.4.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jfcherng/php-mb-string.git",
+                "reference": "ff8dacb993d83b5e8e2d8e325b5a015f3fb2da7d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jfcherng/php-mb-string/zipball/ff8dacb993d83b5e8e2d8e325b5a015f3fb2da7d",
+                "reference": "ff8dacb993d83b5e8e2d8e325b5a015f3fb2da7d",
+                "shasum": ""
+            },
+            "require": {
+                "ext-iconv": "*",
+                "php": ">=7.1.3"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^2.17",
+                "phan/phan": "^2 || ^3 || ^4",
+                "phpunit/phpunit": "^7.2 || ^8 || ^9"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Jfcherng\\Utility\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jack Cherng",
+                    "email": "jfcherng@gmail.com"
+                }
+            ],
+            "description": "A high performance multibytes sting implementation for frequently reading/writing operations.",
+            "time": "2021-01-16T11:51:16+00:00"
+        },
+        {
+            "name": "jfcherng/php-sequence-matcher",
+            "version": "3.2.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jfcherng/php-sequence-matcher.git",
+                "reference": "369933b7cfbc31979fd94bf6391451468f49c693"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jfcherng/php-sequence-matcher/zipball/369933b7cfbc31979fd94bf6391451468f49c693",
+                "reference": "369933b7cfbc31979fd94bf6391451468f49c693",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1.3"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^2.16",
+                "phan/phan": "^2 || ^3",
+                "phpunit/phpunit": ">=7 <10",
+                "squizlabs/php_codesniffer": "^3.5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Jfcherng\\Diff\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Jack Cherng",
+                    "email": "jfcherng@gmail.com"
+                },
+                {
+                    "name": "Chris Boulton",
+                    "email": "chris.boulton@interspire.com"
+                }
+            ],
+            "description": "A longest sequence matcher. The logic is primarily based on the Python difflib package.",
+            "time": "2020-09-03T13:48:27+00:00"
         },
         {
             "name": "laravel/framework",
@@ -3200,6 +3395,49 @@
             "description": "CssToInlineStyles is a class that enables you to convert HTML-pages/files into HTML-pages/files with inline styles. This is very useful when you're sending emails.",
             "homepage": "https://github.com/tijsverkoyen/CssToInlineStyles",
             "time": "2020-07-13T06:12:54+00:00"
+        },
+        {
+            "name": "vi-kon/laravel-diff",
+            "version": "v1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/vi-kon/laravel-diff.git",
+                "reference": "936d23a2031c3629017f1a77622a67f712cfc530"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/vi-kon/laravel-diff/zipball/936d23a2031c3629017f1a77622a67f712cfc530",
+                "reference": "936d23a2031c3629017f1a77622a67f712cfc530",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5.9"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "ViKon\\Diff\\": "src/ViKon/Diff"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kovács Vince",
+                    "email": "vincekovacs@hotmail.com"
+                }
+            ],
+            "description": "Diff tool for Laravel 5",
+            "homepage": "https://github.com/vi-kon/laravel-diff",
+            "keywords": [
+                "compare",
+                "diff",
+                "laravel"
+            ],
+            "abandoned": true,
+            "time": "2016-01-09T22:37:51+00:00"
         },
         {
             "name": "vlucas/phpdotenv",

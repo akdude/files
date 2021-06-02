@@ -1,0 +1,66 @@
+/* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+    .row.content {height: 967px}
+    
+    /* Set gray background color and 100% height */
+    .sidenav {
+      background-color: #f1f1f1;
+      height: 100%;
+    }
+
+    .none{
+      background-color: #c0939378;
+    }
+
+    ins {
+      background-color: green;
+    }
+
+    del {
+      background-color: red;
+    }
+
+    .diff-wrapper {
+      font-family: Arial, Helvetica, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    .diff-wrapper td, .diff-wrapper th {
+      border: 1px solid #ddd;
+      /*padding: 4px;*/
+    }
+
+    .diff-wrapper tr:nth-child(even){background-color: #f2f2f2;}
+
+    .diff-wrapper tr:hover {background-color: #ddd;}
+
+    .diff-wrapper th {
+      padding: 4px;
+      text-align: left;
+      background-color: #252628;
+      color: white;
+    }
+
+    .diff-wrapper td {
+      width: 420px;
+    }
+    .diff-wrapper th {
+      width: 40px;
+    }
+    .mt-5 {
+      margin-top: 5px;
+    }
+    #part-1 {
+      max-height: 800px;
+      overflow-y: scroll;
+    }
+    #result {
+      min-height: 800px;
+    }
+        
+    /* On small screens, set height to 'auto' for the grid */
+    @media screen and (max-width: 767px) {
+      .row.content {height: auto;} 
+    }
+
+    

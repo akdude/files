@@ -7,25 +7,11 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  <style>
-    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
-    .row.content {height: 550px}
-    
-    /* Set gray background color and 100% height */
-    .sidenav {
-      background-color: #f1f1f1;
-      height: 100%;
-    }
-        
-    /* On small screens, set height to 'auto' for the grid */
-    @media screen and (max-width: 767px) {
-      .row.content {height: auto;} 
-    }
-  </style>
+  <link rel="stylesheet" type="text/css" href="/css/main.css">
 </head>
 <body>
 
-<!-- <nav class="navbar navbar-inverse visible-xs">
+<nav class="navbar navbar-inverse visible-xs">
   <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -37,14 +23,14 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Dashboard</a></li>
-        <li><a href="#">Age</a></li>
-        <li><a href="#">Gender</a></li>
-        <li><a href="#">Geo</a></li>
+        <li class="active"><a data-toggle="pill" href="#section1" onclick="analyse('v1vsv2');">File is in v1 but not in v2</a></li>
+        <li><a data-toggle="pill" href="#section2" onclick="analyse('v2vsv1');">File is in v2 but not in v1</a></li>
+        <li><a data-toggle="pill" href="#section3" onclick="analyse('difference');">Common Files with different content</a></li>
+        <li><a data-toggle="pill" href="#section3" onclick="analyse('differenceinfiles');">Differences in the files</a></li>
       </ul>
     </div>
   </div>
-</nav> -->
+</nav>
 <div class="container-fluid">
   <div class="row content">
     <div class="col-sm-3 sidenav hidden-xs">
@@ -60,29 +46,29 @@
     <br>
     <div class="col-sm-9">
         <div class="row" id="selectfile">
-            <div class="col-sm-4">
-                
-            </div>
+            
             <div class="col-sm-4 text-center">
-                <div class="form-group">
-                  <label for="sel1">Compare File:</label>
-                  <select class="form-control" id="files">
+                <div class="form-group row">
+                  <div class="col-md-4">
+                  <label for="sel1" class="mt-5">Compare File:</label>
+                  </div>
+                  <div class="col-md-6">
+                    <select class="form-control" id="files">
                     
                   </select>
+                  </div>
+                  
+                  
                 </div>
             </div>
         </div>
         <div class="row">
-            <div class="col-sm-6" id="part-1">
+            <div class="col-sm-12" id="part-1">
               <div class="well">
                 <p id="result">Some text..</p>
               </div>
             </div>
-            <div class="col-sm-6" id="part-2">
-              <div class="well">
-                <p id="result2">Some text..</p>
-              </div>
-            </div>
+            
         </div>
     </div>
     
@@ -103,10 +89,8 @@
             },
             success: function (response) {
                 if(action == 'differenceinfiles'){
-                    $('#part-2').removeClass('hide');
                     $('#selectfile').removeClass('hide');
-                    $('#result').html(response.old);
-                    $('#result2').html(response.new);
+                    $('#result').html(response.content);
                     if(file == '') {
                         let options = null;
                         $(response.all_files).each(function(index, value){
@@ -114,12 +98,16 @@
                         });
                         $('#files').html(options);
                     }
-    
-                    
-                    
+                    $('.diff-wrapper > thead > tr > th').each(function(){
+                      if($(this).text() == 'Old') {
+                        $(this).text('v1');
+                      }
+                      if($(this).text() == 'New') {
+                        $(this).text('v2');
+                      }
+                    });
                 } else {
                     $('#result').html(response);
-                    $('#part-2').addClass('hide');
                     $('#selectfile').addClass('hide');
                 }
                 
@@ -134,6 +122,8 @@
         let file = $(this).val();
         analyse('differenceinfiles', file);
     });
+
+    
 
     analyse('v1vsv2');
 </script>
